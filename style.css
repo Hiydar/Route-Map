@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+h2 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #38bdf8;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.roadmap-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.phase-card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 2px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    backdrop-filter: blur(8px);
+}
+
+.phase-card:hover {
+    transform: translateY(-8px);
+    border-color: #38bdf8;
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+}
+
+.phase-number {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin-bottom: 8px;
+}
+
+.phase-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.phase-card.active {
+    background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+    border-color: #60a5fa;
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.6);
+    animation: pulse 2s infinite;
+}
+
+.phase-card.completed {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: #10b981;
+    color: #34d399;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(56, 189, 248, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
