@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متبع مراحل المشروع البرمجي</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>خارطة طريق المشروع البرمجي</h2>
+
+    <div class="roadmap-container">
+        <div class="phase-card completed" onclick="selectPhase(this)">
+            <div class="phase-number">المرحلة 1</div>
+            <div class="phase-title">فكرة المشروع والتخطيط</div>
+        </div>
+        <div class="phase-card active" onclick="selectPhase(this)">
+            <div class="phase-number">المرحلة 2</div>
+            <div class="phase-title">التصميم</div>
+        </div>
+        <div class="phase-card" onclick="selectPhase(this)">
+            <div class="phase-number">المرحلة 3</div>
+            <div class="phase-title">التطوير</div>
+        </div>
+        <div class="phase-card" onclick="selectPhase(this)">
+            <div class="phase-number">المرحلة 4</div>
+            <div class="phase-title">الاختبار والجودة</div>
+        </div>
+        <div class="phase-card" onclick="selectPhase(this)">
+            <div class="phase-number">المرحلة 5</div>
+            <div class="phase-title">النشر والتسليم</div>
+        </div>
+        <div class="phase-card" onclick="selectPhase(this)">
+            <div class="phase-number">المرحلة 6</div>
+            <div class="phase-title">الصيانة والدعم</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
