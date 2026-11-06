@@ -121,3 +121,18 @@ function approveAndPass(currentId, nextId) {
 document.addEventListener('DOMContentLoaded', () => {
     render();
 });
+// عند تحميل الصفحة الرئيسية
+window.onload = function() {
+    // جلب نوع المستخدم من الذاكرة
+    let userRole = localStorage.getItem('current_user_role');
+    
+    // تغيير زر الدخول إلى خروج إذا كان مسجلاً
+    let loginBtn = document.querySelector('.logout-btn');
+    if (userRole) {
+        loginBtn.innerText = 'تسجيل الخروج';
+        loginBtn.onclick = function() {
+            localStorage.removeItem('current_user_role'); // مسح البيانات
+            window.location.reload(); // إعادة تحميل الصفحة
+        };
+    }
+};
