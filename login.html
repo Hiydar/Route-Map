@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - نظام إدارة المشاريع البرمجية</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>تسجيل الدخول للنظام</h2>
+        <p>اختر صفة الدخول أو الدور الخاص بك لمتابعة العمل:</p>
+        
+        <div class="role-cards">
+            <div class="role-card" onclick="loginAs('pm')">
+                <h3>مدير المشروع العام</h3>
+                <p>صلاحيات كاملة للمتابعة، التعديل، الحذف، والاعتماد النهائي</p>
+            </div>
+            
+            <div class="role-card" onclick="loginAs('sub_pm')">
+                <h3>مدير فرعي (التخطيط)</h3>
+                <p>مراجعة واعتماد مهام الفرع الخاص بك فقط</p>
+            </div>
+            
+            <div class="role-card" onclick="loginAs('dev')">
+                <h3>موظف (تحليل المتطلبات)</h3>
+                <p>تنفيذ وإرسال المهمة الموكلة إليك للمراجعة</p>
+            </div>
+            
+            <div class="role-card client-card" onclick="loginAs('client')">
+                <h3>شاشة العميل</h3>
+                <p>متابعة نسبة إنجاز المشروع ومراحل التقدم لحظة بلحظة</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
