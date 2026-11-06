@@ -10,31 +10,62 @@
 
     <div class="login-container">
         <h2>تسجيل الدخول للنظام</h2>
-        <p>اختر صفة الدخول أو الدور الخاص بك لمتابعة العمل:</p>
+        <p>اختر صفة الدخول أو الدور الخاص بك:</p>
         
         <div class="role-cards">
-            <div class="role-card" onclick="loginAs('pm')">
+            <div class="role-card" onclick="loginAs('pm', 'مدير المشروع العام')">
                 <h3>مدير المشروع العام</h3>
-                <p>صلاحيات كاملة للمتابعة والتعديل والاعتماد النهائي</p>
+                <p>صلاحيات كاملة للمتابعة، التعديل، والحذف والاعتماد النهائي</p>
             </div>
             
-            <div class="role-card" onclick="loginAs('sub_pm')">
-                <h3>مدير فرعي (التخطيط)</h3>
-                <p>مراجعة واعتماد مهام الفرع الخاص بك فقط</p>
+            <div class="role-card" onclick="loginAs('sub_pm_1', 'مدير فرع التخطيط')">
+                <h3>مدير فرع التخطيط</h3>
+                <p>الإشراف على (الأهداف، المتطلبات، الجدوى، الميزانية، الفريق)</p>
+            </div>
+
+            <div class="role-card" onclick="loginAs('sub_pm_2', 'مدير فرع التصميم')">
+                <h3>مدير فرع التصميم</h3>
+                <p>الإشراف على (تصميم التجربة، واجهة المستخدم، وهندسة النظام)</p>
+            </div>
+
+            <div class="role-card" onclick="loginAs('sub_pm_3', 'مدير فرع التطوير')">
+                <h3>مدير فرع التطوير</h3>
+                <p>الإشراف على (تطوير الواجهات، الدمج والتحكم في الإصدار)</p>
+            </div>
+
+            <div class="role-card" onclick="loginAs('sub_pm_4', 'مدير فرع الاختبار والجودة')">
+                <h3>مدير فرع الاختبار والجودة</h3>
+                <p>الإشراف على (اختبارات الوحدة، النظام، القبول، وإصلاح الأخطاء)</p>
+            </div>
+
+            <div class="role-card" onclick="loginAs('sub_pm_5', 'مدير فرع النشر والتسليم')">
+                <h3>مدير فرع النشر والتسليم</h3>
+                <p>الإشراف على (بيئة الإنتاج، النشر السحابي، وإطلاق المشروع)</p>
+            </div>
+
+            <div class="role-card" onclick="loginAs('sub_pm_6', 'مدير فرع الصيانة والدعم')">
+                <h3>مدير فرع الصيانة والدعم</h3>
+                <p>الإشراف على (مراقبة الأداء، التحديثات، والدعم الفني)</p>
             </div>
             
-            <div class="role-card" onclick="loginAs('dev')">
-                <h3>موظف (تحليل المتطلبات)</h3>
-                <p>تنفيذ وإرسال المهمة الموكلة إليك للمراجعة</p>
+            <div class="role-card" onclick="loginAs('dev', 'موظف تنفيذي')">
+                <h3>موظف</h3>
+                <p>تنفيذ وإرسال المهام الموكلة للمراجعة</p>
             </div>
             
-            <div class="role-card client-card" onclick="loginAs('client')">
+            <div class="role-card client-card" onclick="loginAs('client', 'شاشة العميل')">
                 <h3>شاشة العميل</h3>
                 <p>متابعة نسبة إنجاز المشروع ومراحل التقدم لحظة بلحظة</p>
             </div>
         </div>
     </div>
 
-    <script src="login.js"></script>
+    <script>
+        function loginAs(roleKey, roleName) {
+            localStorage.setItem('current_user_role', roleKey);
+            localStorage.setItem('current_user_name', roleName);
+            window.location.href = 'index.html';
+        }
+    </script>
 </body>
 </html>
