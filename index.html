@@ -3,38 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متبع مراحل المشروع البرمجي</title>
+    <title>خارطة طريق بناء مشروع برمجي - نظام الإدارة المتقدم</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h2> خارطة طريق المشاريع البرمجية</h2>
+    <header>
+        <h1>خارطة طريق بناء مشروع برمجي: من الصفر إلى التسليم</h1>
+    </header>
 
-    <div class="roadmap-container">
-        <div class="phase-card completed" onclick="selectPhase(this)">
-            <div class="phase-number">المرحلة 1</div>
-            <div class="phase-title">فكرة المشروع والتخطيط</div>
+    <!-- شريط التبديل بين الأدوار والصلاحيات -->
+    <div class="role-selector">
+        <button class="role-btn active" onclick="setRole('pm', event)">مدير المشروع العام</button>
+        <button class="role-btn" onclick="setRole('sub_pm', event)">مدير فرعي (التخطيط)</button>
+        <button class="role-btn" onclick="setRole('dev', event)">موظف (تحليل المتطلبات)</button>
+        <button class="role-btn" onclick="setRole('client', event)">شاشة العميل</button>
+    </div>
+
+    <!-- خارطة الطريق الرسومية -->
+    <div class="roadmap-wrapper">
+        <div class="phase-column">
+            <div class="phase-header phase-1">فكرة المشروع & التخطيط</div>
+            <ul class="task-list" id="phase-1-tasks"></ul>
         </div>
-        <div class="phase-card active" onclick="selectPhase(this)">
-            <div class="phase-number">المرحلة 2</div>
-            <div class="phase-title">التصميم</div>
+        <div class="phase-column">
+            <div class="phase-header phase-2">التصميم</div>
+            <ul class="task-list" id="phase-2-tasks"></ul>
         </div>
-        <div class="phase-card" onclick="selectPhase(this)">
-            <div class="phase-number">المرحلة 3</div>
-            <div class="phase-title">التطوير</div>
+        <div class="phase-column">
+            <div class="phase-header phase-3">التطوير</div>
+            <ul class="task-list" id="phase-3-tasks"></ul>
         </div>
-        <div class="phase-card" onclick="selectPhase(this)">
-            <div class="phase-number">المرحلة 4</div>
-            <div class="phase-title">الاختبار والجودة</div>
+        <div class="phase-column">
+            <div class="phase-header phase-4">الاختبار والجودة</div>
+            <ul class="task-list" id="phase-4-tasks"></ul>
         </div>
-        <div class="phase-card" onclick="selectPhase(this)">
-            <div class="phase-number">المرحلة 5</div>
-            <div class="phase-title">النشر والتسليم</div>
+        <div class="phase-column">
+            <div class="phase-header phase-5">النشر والتسليم</div>
+            <ul class="task-list" id="phase-5-tasks"></ul>
         </div>
-        <div class="phase-card" onclick="selectPhase(this)">
-            <div class="phase-number">المرحلة 6</div>
-            <div class="phase-title">الصيانة والدعم</div>
+        <div class="phase-column">
+            <div class="phase-header phase-6">الصيانة والدعم</div>
+            <ul class="task-list" id="phase-6-tasks"></ul>
         </div>
+    </div>
+
+    <!-- شاشة العميل المخصصة لتتبع التقدم -->
+    <div id="client-view" class="client-dashboard" style="display: none;">
+        <h3>حالة تقدم المشروع للعميل</h3>
+        <p>نسبة الإنجاز الكلية: <span id="progress-percent">0%</span></p>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+        <p style="margin-top: 15px; font-size: 0.9rem; color: #64748b;" id="current-phase-desc">المرحلة الحالية: فكرة المشروع والتخطيط</p>
+    </div>
+
+    <!-- لوحة التحكم وإدارة الصلاحيات -->
+    <div id="action-view" class="action-panel">
+        <h3 id="role-title">لوحة تحكم مدير المشروع العام</h3>
+        <div id="action-controls" style="margin-top: 10px;"></div>
     </div>
 
     <script src="script.js"></script>
