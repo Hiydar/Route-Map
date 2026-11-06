@@ -19,7 +19,7 @@ const initialData = [
     { id: 15, phase: 4, title: 'وتحديد وإصلاح الأخطاء', status: 'locked' },
 
     { id: 16, phase: 5, title: 'إعداد بيئة الإنتاج', status: 'locked' },
-    { id: 17, phase: 5, title: 'النشؤ السحابي', status: 'locked' },
+    { id: 17, phase: 5, title: 'النشر السحابي', status: 'locked' },
     { id: 18, phase: 5, title: 'وإطلاق المشروع', status: 'locked' },
 
     { id: 19, phase: 6, title: 'مراقبة الأداء', status: 'locked' },
@@ -28,20 +28,16 @@ const initialData = [
 ];
 
 let projectData = JSON.parse(localStorage.getItem('project_roadmap_db')) || initialData;
-let currentRole = 'pm';
+let currentRole = localStorage.getItem('current_user_role') || 'pm';
 
 function saveData() {
     localStorage.setItem('project_roadmap_db', JSON.stringify(projectData));
     render();
 }
 
-function setRole(role, event) {
-    currentRole = role;
-    document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
-    if (event && event.target) {
-        event.target.classList.add('active');
-    }
-    render();
+function logout() {
+    localStorage.removeItem('current_user_role');
+    window.location.href = 'login.html';
 }
 
 function render() {
@@ -92,17 +88,17 @@ function renderControls() {
         roleTitle.innerText = "صلاحية الموظف (مكلف بـ: تحليل المتطلبات)";
         controls.innerHTML = activeTask.status === 'pending_dev' 
             ? `<button class="btn-action btn-send" onclick="updateTaskStatus(2, 'pending_branch')">حفظ وإرسال إلى مدير الفرع</button>`
-            : `<p>تم إرسال العمل للمراجعة.</p>`;
+            : `<p style="color: #94a3b8;">تم إرسال العمل للمراجعة بنجاح.</p>`;
     } else if (currentRole === 'sub_pm') {
         roleTitle.innerText = "صلاحية مدير فرع (فكرة المشروع والتخطيط)";
         controls.innerHTML = activeTask.status === 'pending_branch' 
             ? `<button class="btn-action btn-review" onclick="updateTaskStatus(2, 'pending_pm')">تمت المراجعة وإرسال للمدير العام</button>`
-            : `<p>لا توجد مهام بانتظار مراجعة الفرع حالياً.</p>`;
+            : `<p style="color: #94a3b8;">لا توجد مهام بانتظار مراجعة الفرع حالياً.</p>`;
     } else if (currentRole === 'pm') {
         roleTitle.innerText = "صلاحية مدير المشروع العام (كل الصلاحيات)";
         controls.innerHTML = activeTask.status === 'pending_pm' 
             ? `<button class="btn-action btn-approve" onclick="approveAndPass(2, 3)">موافقة واعتماد (وتمرير البيانات لموظف دراسة الجدوى)</button>`
-            : `<p>النظام بانتظار اكتمال المراحل الفرعية.</p>`;
+            : `<p style="color: #94a3b8;">النظام بانتظار اكتمال المراحل الفرعية.</p>`;
     }
 }
 
