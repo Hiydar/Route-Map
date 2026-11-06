@@ -10,15 +10,8 @@
 
     <header>
         <h1>خارطة طريق بناء مشروع برمجي: من الصفر إلى التسليم</h1>
+        <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
     </header>
-
-    <!-- شريط التبديل بين الأدوار والصلاحيات -->
-    <div class="role-selector">
-        <button class="role-btn active" onclick="setRole('pm', event)">مدير المشروع العام</button>
-        <button class="role-btn" onclick="setRole('sub_pm', event)">مدير فرعي (التخطيط)</button>
-        <button class="role-btn" onclick="setRole('dev', event)">موظف (تحليل المتطلبات)</button>
-        <button class="role-btn" onclick="setRole('client', event)">شاشة العميل</button>
-    </div>
 
     <!-- خارطة الطريق الرسومية -->
     <div class="roadmap-wrapper">
@@ -55,12 +48,12 @@
         <div class="progress-bar-bg">
             <div class="progress-bar-fill" id="progress-fill"></div>
         </div>
-        <p style="margin-top: 15px; font-size: 0.9rem; color: #64748b;" id="current-phase-desc">المرحلة الحالية: فكرة المشروع والتخطيط</p>
+        <p style="margin-top: 15px; font-size: 0.9rem; color: #94a3b8;" id="current-phase-desc">المرحلة الحالية: فكرة المشروع والتخطيط</p>
     </div>
 
     <!-- لوحة التحكم وإدارة الصلاحيات -->
     <div id="action-view" class="action-panel">
-        <h3 id="role-title">لوحة تحكم مدير المشروع العام</h3>
+        <h3 id="role-title">لوحة التحكم</h3>
         <div id="action-controls" style="margin-top: 10px;"></div>
     </div>
 
