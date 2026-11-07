@@ -3,58 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> نظام الإدارة المتقدم</title>
+    <title>نظام إدارة المشاريع البرمجية - خارطة الطريق المتقدمة</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1> بناء مشروع برمجي: من الصفر إلى التسليم</h1>
-        <button class="logout-btn" onclick="window.location.href='login.html'">تسجيل الدخول</button>
-    </header>
+    <div class="app-container">
+        <!-- شريط علوي احترافي -->
+        <header class="app-header">
+            <div class="brand">
+                <h1>🚀 خارطة طريق بناء مشروع برمجي</h1>
+                <span class="badge">نظام الإدارة والاعتمادات</span>
+            </div>
+            <div class="header-actions">
+                <div class="role-switcher-mini">
+                    <button class="role-btn active" onclick="switchRole('pm')">مدير المشروع العام</button>
+                    <button class="role-btn" onclick="switchRole('sub_pm_1')">مدير فرعي</button>
+                    <button class="role-btn" onclick="switchRole('dev')">موظف</button>
+                    <button class="role-btn" onclick="switchRole('client')">شاشة العميل</button>
+                </div>
+                <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
+            </div>
+        </header>
 
-    <!-- خارطة الطريق الرسومية -->
-    <div class="roadmap-wrapper">
-        <div class="phase-column">
-            <div class="phase-header phase-1">فكرة المشروع & التخطيط</div>
-            <ul class="task-list" id="phase-1-tasks"></ul>
-        </div>
-        <div class="phase-column">
-            <div class="phase-header phase-2">التصميم</div>
-            <ul class="task-list" id="phase-2-tasks"></ul>
-        </div>
-        <div class="phase-column">
-            <div class="phase-header phase-3">التطوير</div>
-            <ul class="task-list" id="phase-3-tasks"></ul>
-        </div>
-        <div class="phase-column">
-            <div class="phase-header phase-4">الاختبار والجودة</div>
-            <ul class="task-list" id="phase-4-tasks"></ul>
-        </div>
-        <div class="phase-column">
-            <div class="phase-header phase-5">النشر والتسليم</div>
-            <ul class="task-list" id="phase-5-tasks"></ul>
-        </div>
-        <div class="phase-column">
-            <div class="phase-header phase-6">الصيانة والدعم</div>
-            <ul class="task-list" id="phase-6-tasks"></ul>
-        </div>
-    </div>
+        <!-- الهيكل الرئيسي (مستوحى من تصميم واجهة الفيديو) -->
+        <div class="dashboard-grid">
+            
+            <!-- العمود الأيمن: القائمة الجانبية للمراحل الـ 6 -->
+            <aside class="sidebar-phases">
+                <h3>مراحل المشروع (6 مراحل)</h3>
+                <div class="phases-nav" id="phases-nav-list"></div>
+            </aside>
 
-    <!-- شاشة العميل المخصصة لتتبع التقدم -->
-    <div id="client-view" class="client-dashboard" style="display: none;">
-        <h3>حالة تقدم المشروع للعميل</h3>
-        <p>نسبة الإنجاز الكلية: <span id="progress-percent">0%</span></p>
-        <div class="progress-bar-bg">
-            <div class="progress-bar-fill" id="progress-fill"></div>
-        </div>
-        <p style="margin-top: 15px; font-size: 0.9rem; color: #94a3b8;" id="current-phase-desc">المرحلة الحالية: فكرة المشروع والتخطيط</p>
-    </div>
+            <!-- الشاشة الوسطى: عرض حالة المهمة النشطة -->
+            <main class="main-content-screen">
+                <div class="screen-card">
+                    <div class="screen-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="screen-title">لوحة المراقبة التفاعلية</span>
+                    </div>
+                    <div class="screen-body" id="screen-body-content"></div>
+                </div>
 
-    <!-- لوحة التحكم وإدارة الصلاحيات -->
-    <div id="action-view" class="action-panel">
-        <h3 id="role-title">لوحة التحكم</h3>
-        <div id="action-controls" style="margin-top: 10px;"></div>
+                <!-- شاشة العميل الحية -->
+                <div class="screen-card client-screen-card" id="client-view-panel" style="display: none;">
+                    <div class="screen-header">
+                        <span class="screen-title">📊 لوحة تتبع العميل اللحظية</span>
+                    </div>
+                    <div class="screen-body">
+                        <p>نسبة إنجاز المشروع الإجمالية: <strong id="client-progress-text">0%</strong></p>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="client-progress-fill"></div>
+                        </div>
+                        <div class="client-status-details" id="client-status-details"></div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- العمود الأيسر: لوحة الاعتمادات والصلاحيات -->
+            <aside class="action-sidebar">
+                <h3>لوحة الاعتمادات والتحكم</h3>
+                <div class="action-card" id="action-panel-content"></div>
+            </aside>
+
+        </div>
     </div>
 
     <script src="script.js"></script>
